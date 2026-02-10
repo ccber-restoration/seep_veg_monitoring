@@ -7,32 +7,45 @@ veg$Date<-as.Date(veg$Date,format<-"%m/%d/%Y")
 veg$Year<-format(veg$Date,format<-"%Y")
 print(veg)
 colnames(veg)
-start_date <- as.Date("2025-01-01")
-end_date <- as.Date("2025-02-24")
+
+# monitored the Phase 2 transects late, both times in February, but we will
+# refer to the data as applying to the previous year
+start_2024 <- as.Date("2025-01-01")
+end_2024 <- as.Date("2025-02-24")
+start_2025 <- as.Date("2026-01-01")
+end_2025 <- as.Date("2026-02-10")
 veg <- veg %>%
   mutate(Year = case_when(
-    between(Date, start_date, end_date) ~ "2024",
+    between(Date, start_2024, end_2024) ~ "2024",
+    between(Date, start_2025, end_2025) ~ "2025",
     TRUE ~ Year
   )) %>%
+  # remove U2W data, this might be restored later down the line, but is not a
+  # part of phase 1 or phase 2
   filter(Transect_Name != "U2W")
+
+# select just native and non-native veg cover
 vegNNN<-veg[veg$Cover_Category=="NATIVE COVER" | 
               veg$Cover_Category=="NON-NATIVE COVER",]
 unique(vegNNN$Cover_Category)
 
+# remove the rows the sum rows
 vegNNN<-vegNNN[vegNNN$PSOC!="Sum of Native Cover" & 
                  vegNNN$PSOC!="Sum of Non-Native Cover",]
+# sum the percent cover in each phase/habitat type
 vegNNN<-aggregate(Percent_Cover~Phase+Habitat+Year+Cover_Category+Transect_Distance+
                   Transect_Name,vegNNN,FUN=sum)
 
+# average percent cover in each phase/habitat type
 vegNNNagg<-aggregate(Percent_Cover~Phase+Habitat+Year+Cover_Category,vegNNN,FUN=mean)
 unique(vegNNNagg$Habitat)
 
-
+# round percent_cover to the nearest decimal place and check the results
 vegNNNagg <- vegNNNagg %>%
   mutate(Percent_Cover = round(Percent_Cover, 1))
 unique(vegNNNagg)
 
-#Absolute
+#Bar Charts: Absolute Percent Cover ----
 unique_phase <- unique(vegNNNagg$Phase)
 unique_habitat <- unique(vegNNNagg$Habitat)
 
@@ -70,7 +83,7 @@ for (i in unique_phase) {
 }
 
 
-#Relative
+#Bar Charts: Relative Percent Cover ----
 for (i in unique_phase) {
   for (j in unique_habitat) {
     p <- subset(vegNNNagg, Phase == i & Habitat == j) %>%
@@ -113,7 +126,7 @@ for (i in unique_phase) {
 }
 
 
-#Relative including bare ground and thatch
+#Bar Charts: Relative including bare ground and thatch ----
 unique(veg$Habitat)
 vegsums<-veg[veg$PSOC=="Bare Ground"|veg$PSOC=="Sum of Thatch Cover"|
                veg$PSOC=="Sum of Non-Native Cover"|veg$PSOC=="Sum of Native Cover"|
