@@ -6,7 +6,7 @@ This repository is used for summarizing Harder Seep/East Storke Wetland vegetati
 
 Data is collected annually in fall/winter at 8 transects. Each transect is 30 meters long. Surveyors use a 1 square meter quadrat to record percent cover of species, bare ground, thatch, and standing water every 2 meters along the transect, alternating between the left and right side of the transect tape. There have been 2 project phases.
 
-    - Phase 1
+-   Phase 1
         - Wetland Transects
             -WL1W
             -WL2W
@@ -15,7 +15,7 @@ Data is collected annually in fall/winter at 8 transects. Each transect is 30 me
             -U1E
             -U2E
             -U1W
-    - Phase 2
+-   Phase 2
         - Wetland Transects
             - WL3W
             - WL4W
