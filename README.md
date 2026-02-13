@@ -19,6 +19,8 @@ Data is collected annually in fall/winter at 8 transects. Each transect is 30 me
   - Wetland Transects
     - WL3W
     - WL4W
+   
+A map of the transects can been viewed on AGOL [here](https://ucsb.maps.arcgis.com/home/item.html?id=368afe3e4aa9463d919311adb3044834#overview).
 
 The data used in this repository is collected through Survey123 "[CCBER VegMonitoring QuadratTransects](https://survey123.arcgis.com/surveys/6b7a083bf6124cb1b0b880cbf700f5e9/overview)". Download the data as CSV and use the [ncos-vegetation-monitoring](https://github.com/ccber-restoration/ncos-vegetation-monitoring) repo to clean it before running the code below.
 
