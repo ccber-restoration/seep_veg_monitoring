@@ -8,17 +8,17 @@ Data is collected annually in fall/winter at 8 transects. Each transect is 30 me
 
 - Phase 1
   - Wetland Transects
-            - WL1W
-            - WL2W
-            - WL1E
+    - WL1W
+    - WL2W
+    - WL1E
   - Upland Transects
-            - U1E
-            - U2E
-            - U1W
+    - U1E
+    - U2E
+    - U1W
 - Phase 2
   - Wetland Transects
-            - WL3W
-            - WL4W
+    - WL3W
+    - WL4W
 
 The data used in this repository is collected through Survey123 "[CCBER VegMonitoring QuadratTransects](https://survey123.arcgis.com/surveys/6b7a083bf6124cb1b0b880cbf700f5e9/overview)". Download the data as CSV and use the [ncos-vegetation-monitoring](https://github.com/ccber-restoration/ncos-vegetation-monitoring) repo to clean it before running the code below.
 
